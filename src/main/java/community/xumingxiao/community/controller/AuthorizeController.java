@@ -21,11 +21,12 @@ public class AuthorizeController {
         accessTokenDTO.setClient_secret("b38c1f8a5d5c6303e6d83f5d24eb54b1be7b61a1");
         accessTokenDTO.setCode(code);
         accessTokenDTO.setRedirect_uri("http://localhost:1234/callback");
+        //accessTokenDTO.setRedirect_uri("http://localhost:1234/path");
         accessTokenDTO.setState(state);
-        githubProvider.getAcessToken(new AccessTokenDTO());
-        //String accessToken =githubProvider.getAcessToken(accessTokenDTO);
-        //GithubUser user=githubProvider.getUser(accessToken);
-        //System.out.println(user.getName());
+        // githubProvider.getAcessToken(accessTokenDTO);
+        String accessToken =githubProvider.getAcessToken(accessTokenDTO);
+        GithubUser user=githubProvider.getUser(accessToken);
+        System.out.println(user.getName());
         return"index";
     }
 }

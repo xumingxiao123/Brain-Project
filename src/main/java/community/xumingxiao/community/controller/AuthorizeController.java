@@ -5,11 +5,15 @@ import community.xumingxiao.community.dto.GithubUser;
 import community.xumingxiao.community.provider.GithubProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
+//@PropertySource({"classpath:application.properties"})
 public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
@@ -23,7 +27,8 @@ public class AuthorizeController {
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name="code")String code,
-                           @RequestParam(name="state")String state){
+                           @RequestParam(name="state")String state,
+                           HttpServletRequest request){
         AccessTokenDTO accessTokenDTO=new AccessTokenDTO();
         accessTokenDTO.setClient_id(clientId);
         accessTokenDTO.setClient_secret(clientScrect);
@@ -34,7 +39,15 @@ public class AuthorizeController {
         // githubProvider.getAcessToken(accessTokenDTO);
         String accessToken =githubProvider.getAcessToken(accessTokenDTO);
         GithubUser user=githubProvider.getUser(accessToken);
-        System.out.println(user.getName());
-        return"index";
+//        System.out.println(user.getId());
+        //return"index";
+        if(user!=null){
+            request.getSession().setAttribute("user",user);
+            return "redirect:/";
+        }else{
+            return "redirect:/";
+        }
+
+
     }
 }

@@ -30,8 +30,10 @@
 - 2020-4-15 开始搭建环境
 - 2020-4-16 运行出第一个网页
 - 2020-4-17 导航栏制作
+- 2020-4-18 实现登录功能
 - 2020-4-20 解决重大问题，即登录时返回404网页。*以后要注意代码书写规范*
 ~~~
 <a href="https://github.com/login/oauth/authorize?client_id=7c8b8107134709190c9d&redirect_uri=http://localhost:1234/callback&scope=user&state=1">登录</a>
 <!-- 注意引号位置-->
 ~~~
+- 2020-4-21 使用H2数据库实现持久化 BUG:There is no getter for property named 'account_id' in 'class 

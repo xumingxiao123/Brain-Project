@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexController {
+    //该注解将HTTP Get 映射到特定的处理方法上。
     @GetMapping("/")
     public String index(){ return "index"; }
 }

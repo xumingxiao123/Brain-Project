@@ -1,6 +1,7 @@
 package community.xumingxiao.community.model;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 public class User {
@@ -47,9 +48,7 @@ public class User {
         this.gmtCreate = gmtCreate;
     }
 
-    public Long getGmtModified() {
-        return gmtModified;
-    }
+    public Long getGmtModified() { return gmtModified; }
 
     public void setGmtModified(Long gmtModified) {
         this.gmtModified = gmtModified;

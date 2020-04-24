@@ -36,4 +36,12 @@
 <a href="https://github.com/login/oauth/authorize?client_id=7c8b8107134709190c9d&redirect_uri=http://localhost:1234/callback&scope=user&state=1">登录</a>
 <!-- 注意引号位置-->
 ~~~
-- 2020-4-21 使用H2数据库实现持久化 BUG:There is no getter for property named 'account_id' in 'class 
+- 2020-4-21 使用H2数据库实现持久化 BUG:There is no getter for property named 'account_id' in 'class
+- 2020-4-24 解决 BUG:There is no getter for property named 'account_id' in 'class 
+~~~
+<!-- 错误写法-->
+values (#{name},#{account_id},#{token},#{gmt_create},#{gmt_modified})
+<!-- 正确写法-->
+values (#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified})
+<!-- 注：要理解命令的作用！要注意细节！！！！！！！！！！！！！->
+~~~
